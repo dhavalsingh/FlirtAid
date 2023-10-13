@@ -12,7 +12,7 @@ import { useChat } from "ai/react";
 export default function Page() {
    const [name, setName] = useState("");
    const [bio, setBio] = useState("");
-   const [vibe, setVibe] = useState<VibeType>("Pun");
+   const [vibe, setVibe] = useState<VibeType>("Icebreaker");
    const bioRef = useRef<null | HTMLDivElement>(null);
 
    const scrollToBios = () => {
@@ -86,7 +86,7 @@ export default function Page() {
                   rows={4}
                   className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
                   placeholder={
-                     "e.g. Looking for something meanifull, loves coffee and traveling. Liverpool and Formula 1 fan."
+                     "e.g. Passionate about meaningful connections, tea aficionado, and globetrotter. Cheering for Liverpool and revving up for Formula 1 races."
                   }
                />
                <div className="flex mb-5 items-center space-x-3">

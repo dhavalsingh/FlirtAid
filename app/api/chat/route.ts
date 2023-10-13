@@ -12,15 +12,15 @@ export const runtime = "edge";
 
 export async function POST(req: Request) {
    const { vibe, bio, name } = await req.json();
-   console.log({ vibe, name, bio });
+   // console.log({ vibe, name, bio });
    const content = `
    Generate 2 lines for a dating app message labeled "1." and "2.". Each line should be less than 160 characters, casual, meaningful, and not too intense. The context for the person reciving the message is: ${bio}${bio.slice(-1) === '.' ? '' : '.'}
    ${
-       vibe === 'Song'
+       vibe === 'Lyrical Line'
        ? `The lines shoule rhyme like a poem or song, incorporating either the name: ${name} or the above context.`
-       : vibe === 'Opener'
+       : vibe === 'Icebreaker'
        ? "The lines should be catchy openers with a hint of cheesiness."
-       : vibe === 'Pun'
+       : vibe === 'Puns'
        ? `Craft a pun using the receiver's name: ${name}.`
        : ''
    }`
