@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  basePath: '/flirtaid',
-  assetPrefix: '/flirtaid/',
   async redirects() {
     return [
       {
