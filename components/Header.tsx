@@ -7,14 +7,17 @@ export default function Header() {
       <Link href="/" className="flex space-x-3">
         <Image
           alt="header text"
-          src="/writingIcon.png"
-          className="sm:w-12 sm:h-12 w-8 h-8"
-          width={32}
-          height={32}
+          src="/logo.png"
+          className="sm:w-16 sm:h-16 w-12 h-12"
+          width={128}
+          height={128}
         />
-        <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">
-          twitterbio.io
-        </h1>
+    <div className="flex flex-col">
+      <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">
+        Flirt Aid
+      </h1>
+      <p className="sm:text-xl text-lg ml-2">Crafting Connection, One Flirt at a Time.</p> {/* Added this line */}
+    </div>
       </Link>
       <a
         href="https://vercel.com/templates/next.js/twitter-bio"
