@@ -21,7 +21,7 @@ export default function Page() {
       }
    };
 
-   const { input, setInput, handleSubmit, isLoading, messages } = useChat({
+   const { handleInputChange, handleSubmit, isLoading, messages } = useChat({
       body: {
          name,
          vibe,
@@ -31,11 +31,6 @@ export default function Page() {
          scrollToBios();
       },
    });
-
-   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-      setInput(bio);
-      handleSubmit(e);
-   };
 
    const lastMessage = messages[messages.length - 1];
    const generatedBios = lastMessage?.role === "assistant" ? lastMessage.content : null;
@@ -57,7 +52,7 @@ export default function Page() {
                Generate your next Twitter bio using chatGPT
             </h1>
             <p className="text-slate-500 mt-5">47,118 bios generated so far.</p>
-            <form className="max-w-xl w-full" onSubmit={onSubmit}>
+            <form className="max-w-xl w-full" onSubmit={handleSubmit}>
                <div className="flex mt-10 items-center space-x-3">
                   <Image src="/1-black.png" width={30} height={30} alt="1 icon" className="mb-5 sm:mb-0" />
                   <p className="text-left font-medium">Enter Name</p>
@@ -77,7 +72,10 @@ export default function Page() {
                </div>
                <textarea
                   value={bio}
-                  onChange={(e) => setBio(e.target.value)}
+                  onChange={(e) => {
+                     handleInputChange(e);
+                     setBio(e.target.value);
+                  }}
                   rows={4}
                   className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
                   placeholder={
