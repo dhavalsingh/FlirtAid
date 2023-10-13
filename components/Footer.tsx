@@ -23,7 +23,7 @@ export default function Footer() {
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
-          href="https://twitter.com/nutlope"
+          href="https://twitter.com/dhavalsingh7"
           className="group"
           aria-label="Nutlope Twitter"
         >
@@ -35,7 +35,7 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/Nutlope/twitterbio"
+          href="https://github.com/dhavalsingh/FlirtAid"
           className="group"
           aria-label="GitHub"
         >

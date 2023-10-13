@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  basePath: '/flirtaid',
+  assetPrefix: '/flirtaid/',
   async redirects() {
     return [
       {
         source: '/github',
-        destination: 'https://github.com/Nutlope/twitterbio',
+        destination: 'https://github.com/dhavalsingh',
         permanent: false,
       },
       {
