@@ -13,7 +13,7 @@ export default function Header() {
           height={32}
         />
         <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">
-          twitterbio.io
+          flirtaid.io
         </h1>
       </Link>
       <a

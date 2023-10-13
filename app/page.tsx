@@ -10,8 +10,9 @@ import Header from '../components/Header';
 import { useChat } from 'ai/react';
 
 export default function Page() {
+  const [name, setName] = useState('');
   const [bio, setBio] = useState('');
-  const [vibe, setVibe] = useState<VibeType>('Professional');
+  const [vibe, setVibe] = useState<VibeType>('Pun');
   const bioRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBios = () => {
@@ -19,20 +20,29 @@ export default function Page() {
       bioRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  console.log("init")
 
   const { input, handleInputChange, handleSubmit, isLoading, messages } =
     useChat({
       body: {
         vibe,
         bio,
+        name,
       },
       onResponse() {
         scrollToBios();
       },
     });
 
+
   const onSubmit = (e: any) => {
-    setBio(input);
+    //setBio(input);
+    //setName(name);
+    e.preventDefault();
+    console.log(name)
+    console.log(vibe)
+    console.log(bio)
+    console.log(handleSubmit,e)
     handleSubmit(e);
   };
 
@@ -53,10 +63,28 @@ export default function Page() {
           <p>Star on GitHub</p>
         </a>
         <h1 className="sm:text-6xl text-4xl max-w-[708px] font-bold text-slate-900">
-          Generate your next Twitter bio using chatGPT
+        Compose Flirty Messages, Lyrics, and Puns Tailored to Any Profile!
         </h1>
         <p className="text-slate-500 mt-5">47,118 bios generated so far.</p>
         <form className="max-w-xl w-full" onSubmit={onSubmit}>
+                {/* New Input field for Name */}
+      <div className="flex mt-10 items-center space-x-3">
+        <Image
+          src="/3-black.jpeg" 
+          width={30}
+          height={30}
+          alt="0 icon"
+        />
+        <p className="text-left font-medium">
+          Enter the name:
+        </p>
+      </div>
+      <input
+        value={name}
+        onChange={e => setName(e.target.value)}
+        className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
+        placeholder={'e.g. John Doe'}
+      />
           <div className="flex mt-10 items-center space-x-3">
             <Image
               src="/1-black.png"
@@ -66,16 +94,16 @@ export default function Page() {
               className="mb-5 sm:mb-0"
             />
             <p className="text-left font-medium">
-              Copy your current bio{' '}
+              Add the user bio{' '}
               <span className="text-slate-500">
-                (or write a few sentences about yourself)
+                (or write a few sentences about them)
               </span>
               .
             </p>
           </div>
           <textarea
-            value={input}
-            onChange={handleInputChange}
+            value={bio}
+            onChange={e => setBio(e.target.value)}
             rows={4}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
             placeholder={
@@ -95,7 +123,7 @@ export default function Page() {
               className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
               type="submit"
             >
-              Generate your bio &rarr;
+              Generate your msg &rarr;
             </button>
           )}
           {isLoading && (
@@ -125,7 +153,7 @@ export default function Page() {
                   className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
                   ref={bioRef}
                 >
-                  Your generated bios
+                  Your generated msgs
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">

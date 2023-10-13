@@ -11,7 +11,30 @@ const openai = new OpenAIApi(config);
 export const runtime = 'edge';
 
 export async function POST(req: Request) {
-  const { vibe, bio } = await req.json();
+  const { name, vibe, bio } = await req.json();
+  // console.log(req.json())
+
+  const content = `Generate 2 lines as a message to send on a dating app to someone i have matched with, without any hashtags and clearly labeled "1." and "2.". ${
+    vibe === 'Song'
+      ? `Make sure the 2 lines are from an actual song using the name ${name} in someway.`
+      : ''
+  }
+  ${
+    vibe === 'Opener'
+      ? "Make sure the 2 lines are openning lines and a little cheezy."
+      : ''
+  }
+  ${
+    vibe === 'Pun'
+      ? `Make sure the 2 lines are a good pun using the name of the message reciver: ${name}.`
+      : ''
+  }
+    Make sure each generated line is less than 160 characters, is not too hardcore, is meanigful and a little casual, and base them on this context: ${bio}${
+    bio.slice(-1) === '.' ? '' : '.'
+  }`;
+
+  // Log the content
+  console.log("Generated Content:", content);
 
   // Ask OpenAI for a streaming completion given the prompt
   const response = await openai.createChatCompletion({
@@ -20,14 +43,7 @@ export async function POST(req: Request) {
     messages: [
       {
         role: 'user',
-        content: `Generate 2 ${vibe} twitter biographies with no hashtags and clearly labeled "1." and "2.". ${
-          vibe === 'Funny'
-            ? "Make sure there is a joke in there and it's a little ridiculous."
-            : null
-        }
-          Make sure each generated biography is less than 160 characters, has short sentences that are found in Twitter bios, and base them on this context: ${bio}${
-          bio.slice(-1) === '.' ? '' : '.'
-        }`,
+        content: content,
       },
     ],
   });
