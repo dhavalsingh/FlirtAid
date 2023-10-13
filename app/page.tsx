@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { VibeType } from "../components/DropDown";
 import Footer from "../components/Footer";
@@ -21,7 +21,7 @@ export default function Page() {
       }
    };
 
-   const { handleInputChange, handleSubmit, isLoading, messages } = useChat({
+   const { setInput, handleSubmit, isLoading, messages } = useChat({
       body: {
          name,
          vibe,
@@ -52,7 +52,14 @@ export default function Page() {
                Generate your next Twitter bio using chatGPT
             </h1>
             <p className="text-slate-500 mt-5">47,118 bios generated so far.</p>
-            <form className="max-w-xl w-full" onSubmit={handleSubmit}>
+            <form
+               className="max-w-xl w-full"
+               onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit(e);
+                  setInput(bio);
+               }}
+            >
                <div className="flex mt-10 items-center space-x-3">
                   <Image src="/1-black.png" width={30} height={30} alt="1 icon" className="mb-5 sm:mb-0" />
                   <p className="text-left font-medium">Enter Name</p>
@@ -73,7 +80,7 @@ export default function Page() {
                <textarea
                   value={bio}
                   onChange={(e) => {
-                     handleInputChange(e);
+                     setInput(e.target.value);
                      setBio(e.target.value);
                   }}
                   rows={4}
