@@ -1,14 +1,13 @@
-# [twitterbio.io](https://www.twitterbio.io/)
+# [FlirtAid](https://flirt-aid.vercel.app/)
 
-This project generates Twitter bios for you using AI.
+This project Compose Flirty Messages, Lyrics, and Puns Tailored to Any Profile using AI.
 
-[![Twitter Bio Generator](./public/screenshot.png)](https://www.twitterbio.io)
+[![Twitter Bio Generator](./public/screenshot.png)](https://flirt-aid.vercel.app/)
 
 ## How it works
 
 This project uses the [ChatGPT API](https://openai.com/api/) and the [Vercel AI SDK](https://sdk.vercel.ai/docs) with streaming. It constructs a prompt based on the form and user input, sends it to the ChatGPT API with a Vercel Edge Function, then streams the response back to the application UI.
 
-> This template has recently been updated for the AI SDK, simplifying the amount of code needed. I previously published a [video](https://youtu.be/JcE-1xzQTE0) and [blog post](https://vercel.com/blog/gpt-3-app-next-js-vercel-edge-functions) showing the older approach.
 
 ## Running Locally
 
