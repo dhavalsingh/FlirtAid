@@ -6,7 +6,7 @@ const title = 'Flirt Aid';
 const description = 'Compose Flirty Messages, Lyrics, and Puns Tailored to Any Profile!';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://twitterbio.io'),
+  metadataBase: new URL('https://flirt-aid.vercel.app/'),
   title,
   description,
   openGraph: {
